@@ -12,3 +12,4 @@ C:\Users\ajayv\Documents\Zeiss\CsTraining\ProductClass\ProductClass\obj\Debug\ne
 C:\Users\ajayv\Documents\Zeiss\CsTraining\ProductClass\ProductClass\obj\Debug\net8.0\ProductClass.pdb
 C:\Users\ajayv\Documents\Zeiss\CsTraining\ProductClass\ProductClass\obj\Debug\net8.0\ProductClass.genruntimeconfig.cache
 C:\Users\ajayv\Documents\Zeiss\CsTraining\ProductClass\ProductClass\obj\Debug\net8.0\ref\ProductClass.dll
+C:\Users\ajayv\Documents\Zeiss\CsTraining\ProductClass\ProductClass\obj\Debug\net8.0\ProductClass.sourcelink.json

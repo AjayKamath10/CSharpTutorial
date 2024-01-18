@@ -18,25 +18,29 @@ namespace ProductClass
         private int PrivateStock;
         private decimal PrivateDiscount;
         private int PrivateGST;
+        private static Logger Write = new Logger();
+
 
         static void Main(string[] args)
         {
-
             int choice;
             var productList = new List<Product>();
 
             do
             {
-                Console.WriteLine("-----MENU-----");
-                Console.WriteLine();
-                Console.WriteLine("1. Add Product");
-                Console.WriteLine("2. Display Products");
-                Console.WriteLine("3. Exit");
+
+                Write.log("\n-----MENU-----");
+                Write.log();
+                Write.log("1. Add Product");
+                Write.log("2. Display all Products");
+                Write.log("3. Find Product");
+                Write.log("4. Exit");
+                Write.log();
 
                 Console.Write("Enter your choice: ");
                 if (!int.TryParse(Console.ReadLine(), out choice))
                 {
-                    Console.WriteLine("Invalid input. Please enter a number.");
+                    Write.log("Invalid input. Please enter a number.");
                     continue;
                 }
 
@@ -49,62 +53,103 @@ namespace ProductClass
                         DisplayProducts(productList);
                         break;
                     case 3:
-                        Console.WriteLine("Exiting...");
+                        FindProduct(productList);
+                        break;
+                    case 4:
+                        Write.log("Exiting...");
                         break;
                     default:
-                        Console.WriteLine("Invalid choice. Please enter a valid option.");
+                        Write.log("Invalid choice. Please enter a valid option.");
                         break;
-                }
-
-                
+                }             
 
 
 
-            } while (choice != 3);
+            } while (choice != 4);
         }
 
         static void AddProduct(List<Product> productList)
         {
-            Product newProduct = new Product();
-            Console.Write("Enter Product ID: ");
-            newProduct.ProductId = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                Product newProduct = new Product();
+                Console.Write("Enter Product ID: ");
+                newProduct.ProductId = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Enter Product Name: ");
-            newProduct.ProductName = Console.ReadLine();
+                Console.Write("Enter Product Name: ");
+                newProduct.ProductName = Console.ReadLine();
 
-            Console.Write("Enter Manufacturing Date (mm/dd/yyyy): ");
-            newProduct.MfgDate = Convert.ToDateTime(Console.ReadLine());
+                Console.Write("Enter Manufacturing Date (mm/dd/yyyy): ");
+                newProduct.MfgDate = Convert.ToDateTime(Console.ReadLine());
 
-            Console.Write("Enter Warranty(in months): ");
-            newProduct.Warranty = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter Warranty(in months): ");
+                newProduct.Warranty = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Enter Price: ");
-            newProduct.Price = Convert.ToDecimal(Console.ReadLine());
+                Console.Write("Enter Price: ");
+                newProduct.Price = Convert.ToDecimal(Console.ReadLine());
         
-            Console.Write("Enter Stock: ");
-            newProduct.Stock = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter Stock: ");
+                newProduct.Stock = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Enter GST(5, 12, 18, or 28): ");
-            newProduct.GST = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter GST(5, 12, 18, or 28): ");
+                newProduct.GST = Convert.ToInt32(Console.ReadLine());
         
-            Console.Write("Enter Discount: ");
-            newProduct.Discount = Convert.ToDecimal(Console.ReadLine());
+                Console.Write("Enter Discount: ");
+                newProduct.Discount = Convert.ToDecimal(Console.ReadLine());
             
-            productList.Add(newProduct);
+                productList.Add(newProduct);
+
+            }
+            catch(Exception e)
+            {
+                Write.log();
+                Write.log(e.GetType().ToString());
+                Write.log("Try Again");
+            }
+            
     }
 
         static void DisplayProducts(List<Product> ProductList)
         {
-            Console.WriteLine("----PRODUCT DETAILS----");
-            Console.WriteLine();
+            if (ProductList.Count == 0)
+            {
+                Write.log("Product list is empty");
+                return;
+            } 
+            Write.log("----PRODUCT DETAILS----");
+            Write.log();
             foreach (Product TempProduct in ProductList)
             {
-                Console.WriteLine("------------");
-                Console.WriteLine(TempProduct.Display());
+                Write.log("------------");
+                Write.log(TempProduct.Display());
                 
-                Console.WriteLine();
+                Write.log();
             }
-            Console.WriteLine("------------");
+            Write.log("------------");
+        }
+    
+        static void FindProduct(List<Product> ProductList)
+        {
+            if (ProductList.Count == 0)
+            {
+                Write.log("Product list is empty");
+                return;
+            }
+            int ProductIdInput;
+            Console.Write("Enter Product ID: ");
+            ProductIdInput = int.Parse(Console.ReadLine());
+            foreach (Product ProductItem in ProductList)
+            {
+                if (ProductItem.ProductId == ProductIdInput)
+                {
+                    Write.log("Product Found!");
+                    Write.log(ProductItem.Display());
+                    return;
+                }
+                
+            }
+            Write.log("Product Not Found!");
+
         }
     }
 }

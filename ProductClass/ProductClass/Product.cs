@@ -18,6 +18,7 @@ namespace ProductClass
         private int PrivateStock;
         private decimal PrivateDiscount;
         private int PrivateGST;
+        private static Logger Write = new Logger();
 
         public int ProductId
         {
@@ -27,10 +28,12 @@ namespace ProductClass
             }
             set
             {
+               
                 if (value > 0)
                     PrivateProductId = value;
                 else
                     throw new Exception("Invalid Employee ID");
+                
             }
         }
               

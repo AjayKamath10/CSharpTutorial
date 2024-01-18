@@ -1,0 +1,147 @@
+
+-----MENU-----
+
+1. Add Product
+2. Display all Products
+3. Find Product
+4. Exit
+
+Enter your choice: 1
+Enter Product ID: 123
+Enter Product Name: abcd
+Enter Manufacturing Date (mm/dd/yyyy): 10/09/2002
+Enter Warranty(in months): 12
+Enter Price: 500
+Enter Stock: 2
+Enter GST(5, 12, 18, or 28): 12
+Enter Discount: 10
+
+-----MENU-----
+
+1. Add Product
+2. Display all Products
+3. Find Product
+4. Exit
+
+Enter your choice: 2
+----PRODUCT DETAILS----
+
+------------
+Id: 123
+Name: abcd
+Manufacturing Date: 10-09-2002
+Warranty: 12 months
+Tax Price: 500
+Stock: 2
+Discount Price: 450.0
+
+
+------------
+
+-----MENU-----
+
+1. Add Product
+2. Display all Products
+3. Find Product
+4. Exit
+
+Enter your choice: 1
+Enter Product ID: 10
+Enter Product Name: xyzz
+Enter Manufacturing Date (mm/dd/yyyy): 01/01/2024
+Enter Warranty(in months): 12
+Enter Price: 10000
+Enter Stock: 5
+Enter GST(5, 12, 18, or 28): 28
+Enter Discount: 5
+
+-----MENU-----
+
+1. Add Product
+2. Display all Products
+3. Find Product
+4. Exit
+
+Enter your choice: 2
+----PRODUCT DETAILS----
+
+------------
+Id: 123
+Name: abcd
+Manufacturing Date: 10-09-2002
+Warranty: 12 months
+Tax Price: 500
+Stock: 2
+Discount Price: 450.0
+
+
+------------
+Id: 10
+Name: xyzz
+Manufacturing Date: 01-01-2024
+Warranty: 12 months
+Tax Price: 10000
+Stock: 5
+Discount Price: 9500.00
+
+
+------------
+
+-----MENU-----
+
+1. Add Product
+2. Display all Products
+3. Find Product
+4. Exit
+
+Enter your choice: 3
+Enter Product ID: 10
+Product Found!
+Id: 10
+Name: xyzz
+Manufacturing Date: 01-01-2024
+Warranty: 12 months
+Tax Price: 10000
+Stock: 5
+Discount Price: 9500.00
+
+
+-----MENU-----
+
+1. Add Product
+2. Display all Products
+3. Find Product
+4. Exit
+
+Enter your choice: 3
+Enter Product ID: 1
+Product Not Found!
+
+-----MENU-----
+
+1. Add Product
+2. Display all Products
+3. Find Product
+4. Exit
+
+Enter your choice: 3
+Enter Product ID: 123
+Product Found!
+Id: 123
+Name: abcd
+Manufacturing Date: 10-09-2002
+Warranty: 12 months
+Tax Price: 500
+Stock: 2
+Discount Price: 450.0
+
+
+-----MENU-----
+
+1. Add Product
+2. Display all Products
+3. Find Product
+4. Exit
+
+Enter your choice: 4
+Exiting...
