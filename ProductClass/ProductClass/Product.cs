@@ -144,8 +144,8 @@ namespace ProductClass
         private decimal TaxPrice, DiscountPrice;
         public string Display()
         {
-            TaxPrice = Price * (1 + GST / 100);
-            DiscountPrice = TaxPrice * (1-Discount/100);
+            TaxPrice = Price * (1 + (decimal)GST / 100);
+            DiscountPrice = TaxPrice * (1- (decimal)Discount /100);
 
             StringBuilder Details = new StringBuilder();
             Details.Append("Id: " + ProductId + "\n");

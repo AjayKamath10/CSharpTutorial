@@ -24,8 +24,8 @@ namespace ProductClass
         static void Main(string[] args)
         {
             int choice;
-            
-            Dictionary<int,Product> productList = new Dictionary<int, Product>();
+
+            Dictionary<int, Product> productList = new Dictionary<int, Product>();
 
             do
             {
@@ -39,7 +39,7 @@ namespace ProductClass
                 Write.log("5. Exit");
                 Write.log();
 
-                Console.Write("Enter your choice: ");
+                Write.log("Enter your choice: ");
                 if (!int.TryParse(Console.ReadLine(), out choice))
                 {
                     Write.log("Invalid input. Please enter a number.");
@@ -66,57 +66,59 @@ namespace ProductClass
                     default:
                         Write.log("Invalid choice. Please enter a valid option.");
                         break;
-                }             
+                }
 
 
 
             } while (choice != 5);
         }
 
-        static void AddProduct(Dictionary<int,Product> productList)
+        static void AddProduct(Dictionary<int, Product> productList)
         {
             int ProductIdInput;
             try
             {
                 Product newProduct = new Product();
-                Console.Write("Enter Product ID: ");
+                Write.log("Enter Product ID: ");
                 ProductIdInput = Convert.ToInt32(Console.ReadLine());
+
                 if (productList.ContainsKey(ProductIdInput))
                     throw new Exception("Product already present");
                 newProduct.ProductId = ProductIdInput;
 
-                Console.Write("Enter Product Name: ");
+                Write.log("Enter Product Name: ");
                 newProduct.ProductName = Console.ReadLine();
 
-                Console.Write("Enter Manufacturing Date (mm/dd/yyyy): ");
+                Write.log("Enter Manufacturing Date (mm/dd/yyyy): ");
                 newProduct.MfgDate = Convert.ToDateTime(Console.ReadLine());
 
-                Console.Write("Enter Warranty(in months): ");
+                Write.log("Enter Warranty(in months): ");
                 newProduct.Warranty = Convert.ToInt32(Console.ReadLine());
 
-                Console.Write("Enter Price: ");
+                Write.log("Enter Price: ");
                 newProduct.Price = Convert.ToDecimal(Console.ReadLine());
-        
-                Console.Write("Enter Stock: ");
+
+                Write.log("Enter Stock: ");
                 newProduct.Stock = Convert.ToInt32(Console.ReadLine());
 
-                Console.Write("Enter GST(5, 12, 18, or 28): ");
+                Write.log("Enter GST(5, 12, 18, or 28): ");
                 newProduct.GST = Convert.ToInt32(Console.ReadLine());
-        
-                Console.Write("Enter Discount: ");
+
+                Write.log("Enter Discount: ");
                 newProduct.Discount = Convert.ToDecimal(Console.ReadLine());
-            
+
                 productList.Add(ProductIdInput, newProduct);
 
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Write.log();
                 Write.log(e.Message.ToString());
                 Write.log("Try Again");
             }
-            
-    }
+
+        }
 
         static void DisplayProducts(Dictionary<int, Product> ProductList)
         {
@@ -124,7 +126,7 @@ namespace ProductClass
             {
                 Write.log("Product list is empty");
                 return;
-            } 
+            }
             Write.log("----PRODUCT DETAILS----");
             Write.log();
             foreach (Product TempProduct in ProductList.Values)
@@ -135,7 +137,7 @@ namespace ProductClass
             }
             Write.log("------------");
         }
-    
+
         static void FindProduct(Dictionary<int, Product> ProductList)
         {
             if (ProductList.Count == 0)
@@ -144,7 +146,7 @@ namespace ProductClass
                 return;
             }
             int ProductIdInput;
-            Console.Write("Enter Product ID: ");
+            Write.log("Enter Product ID: ");
             ProductIdInput = int.Parse(Console.ReadLine());
             if (ProductList.Keys.Contains(ProductIdInput))
             {
@@ -161,7 +163,7 @@ namespace ProductClass
 
         }
 
-        static void RemoveProduct(Dictionary<int, Product> ProductList) 
+        static void RemoveProduct(Dictionary<int, Product> ProductList)
         {
             int ProductIdInput;
             Write.log("Enter Product ID of product to be deleted: ");
@@ -176,4 +178,3 @@ namespace ProductClass
         }
     }
 }
-
