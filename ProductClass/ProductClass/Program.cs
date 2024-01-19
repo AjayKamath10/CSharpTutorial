@@ -35,7 +35,8 @@ namespace ProductClass
                 Write.log("1. Add Product");
                 Write.log("2. Display all Products");
                 Write.log("3. Find Product");
-                Write.log("4. Exit");
+                Write.log("4. Remove Product");
+                Write.log("5. Exit");
                 Write.log();
 
                 Console.Write("Enter your choice: ");
@@ -57,6 +58,9 @@ namespace ProductClass
                         FindProduct(productList);
                         break;
                     case 4:
+                        RemoveProduct(productList);
+                        break;
+                    case 5:
                         Write.log("Exiting...");
                         break;
                     default:
@@ -66,7 +70,7 @@ namespace ProductClass
 
 
 
-            } while (choice != 4);
+            } while (choice != 5);
         }
 
         static void AddProduct(Dictionary<int,Product> productList)
@@ -155,6 +159,20 @@ namespace ProductClass
                 Write.log("Product Not Found!");
             }
 
+        }
+
+        static void RemoveProduct(Dictionary<int, Product> ProductList) 
+        {
+            int ProductIdInput;
+            Write.log("Enter Product ID of product to be deleted: ");
+            ProductIdInput = Convert.ToInt32(Console.ReadLine());
+            if (!ProductList.ContainsKey(ProductIdInput))
+            {
+                Write.log("Product does not exist");
+                return;
+            }
+            ProductList.Remove(ProductIdInput);
+            Write.log("Product deleted.");
         }
     }
 }
