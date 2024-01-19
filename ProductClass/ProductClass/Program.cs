@@ -24,7 +24,8 @@ namespace ProductClass
         static void Main(string[] args)
         {
             int choice;
-            var productList = new List<Product>();
+            
+            Dictionary<int,Product> productList = new Dictionary<int, Product>();
 
             do
             {
@@ -68,13 +69,17 @@ namespace ProductClass
             } while (choice != 4);
         }
 
-        static void AddProduct(List<Product> productList)
+        static void AddProduct(Dictionary<int,Product> productList)
         {
+            int ProductIdInput;
             try
             {
                 Product newProduct = new Product();
                 Console.Write("Enter Product ID: ");
-                newProduct.ProductId = Convert.ToInt32(Console.ReadLine());
+                ProductIdInput = Convert.ToInt32(Console.ReadLine());
+                if (productList.ContainsKey(ProductIdInput))
+                    throw new Exception("Product already present");
+                newProduct.ProductId = ProductIdInput;
 
                 Console.Write("Enter Product Name: ");
                 newProduct.ProductName = Console.ReadLine();
@@ -97,19 +102,19 @@ namespace ProductClass
                 Console.Write("Enter Discount: ");
                 newProduct.Discount = Convert.ToDecimal(Console.ReadLine());
             
-                productList.Add(newProduct);
+                productList.Add(ProductIdInput, newProduct);
 
             }
             catch(Exception e)
             {
                 Write.log();
-                Write.log(e.GetType().ToString());
+                Write.log(e.Message.ToString());
                 Write.log("Try Again");
             }
             
     }
 
-        static void DisplayProducts(List<Product> ProductList)
+        static void DisplayProducts(Dictionary<int, Product> ProductList)
         {
             if (ProductList.Count == 0)
             {
@@ -118,17 +123,16 @@ namespace ProductClass
             } 
             Write.log("----PRODUCT DETAILS----");
             Write.log();
-            foreach (Product TempProduct in ProductList)
+            foreach (Product TempProduct in ProductList.Values)
             {
                 Write.log("------------");
                 Write.log(TempProduct.Display());
-                
                 Write.log();
             }
             Write.log("------------");
         }
     
-        static void FindProduct(List<Product> ProductList)
+        static void FindProduct(Dictionary<int, Product> ProductList)
         {
             if (ProductList.Count == 0)
             {
@@ -138,17 +142,18 @@ namespace ProductClass
             int ProductIdInput;
             Console.Write("Enter Product ID: ");
             ProductIdInput = int.Parse(Console.ReadLine());
-            foreach (Product ProductItem in ProductList)
+            if (ProductList.Keys.Contains(ProductIdInput))
             {
-                if (ProductItem.ProductId == ProductIdInput)
-                {
-                    Write.log("Product Found!");
-                    Write.log(ProductItem.Display());
-                    return;
-                }
-                
+
+                Write.log("Product Found!");
+                Write.log(ProductList[ProductIdInput].Display());
+                return;
+
             }
-            Write.log("Product Not Found!");
+            else
+            {
+                Write.log("Product Not Found!");
+            }
 
         }
     }
